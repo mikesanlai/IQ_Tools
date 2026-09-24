@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Camera Lab｜影像品質測試</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">◉</span><div><strong>Camera Lab</strong><small>IMAGE QUALITY WORKSPACE</small></div></div>
+      <div class="top-actions"><span class="privacy-pill"><span class="live-dot"></span>本機影像分析</span><button id="uploadButton" class="button subtle">↑&nbsp; 開啟照片</button><input id="fileInput" type="file" accept="image/*,.bmp" hidden><button id="analyzeButton" class="button primary">▶&nbsp; 開始分析</button></div>
+    </header>
+
+    <div class="main-grid">
+      <aside class="sidebar">
+        <div class="side-heading">測試項目 <span>07</span></div>
+        <nav id="testNav" aria-label="測試項目"></nav>
+        <div class="side-note"><span>ⓘ</span><p>透過本機 HTTP 開啟時，範例影像會依測試項目自動切換。也可開啟自己的照片進行分析。</p></div>
+      </aside>
+
+      <main class="workspace">
+        <section class="page-intro"><div><div class="eyebrow" id="categoryLabel">ISO 12233 CHART · 01 / 07</div><h1 id="testTitle">Resolution <span>解析度</span></h1><p id="testDescription"></p></div><span id="chartBadge" class="chart-badge">ISO 12233</span></section>
+        <section class="viewer-card">
+          <div class="viewer-head"><div class="viewer-title"><span class="viewer-icon">▣</span><div><strong id="imageName">—</strong><small id="imageMeta">等待載入影像</small></div></div><div class="viewer-tools"><button id="zoomOut" class="icon-button" title="縮小">−</button><span id="zoomLabel">100%</span><button id="zoomIn" class="icon-button" title="放大">＋</button><button id="fitButton" class="icon-button fit" title="符合視窗">⤢</button></div></div>
+          <div id="canvasStage" class="canvas-stage"><div id="canvasWrap" class="canvas-wrap"><canvas id="imageCanvas" aria-label="照片與量測標記"></canvas></div><div id="loading" class="stage-message">載入影像中…</div></div>
+          <div class="viewer-foot"><span id="interactionHint">拖曳選取測試區域</span><span id="cursorReadout">R: —　G: —　B: —　X: —　Y: —</span></div>
+        </section>
+        <div class="workspace-foot"><span class="live-dot"></span><span id="statusText">準備就緒</span><span class="spacer"></span><button id="resetButton" class="text-button">重設選取</button></div>
+      </main>
+
+      <aside class="results-panel">
+        <div class="panel-top"><div><div class="eyebrow">MEASUREMENT</div><h2>量測結果</h2></div><span id="resultState" class="state-pill">待分析</span></div>
+        <div id="resultContent" class="result-content"></div>
+        <div class="panel-bottom"><button id="exportButton" class="button outline" disabled>↓&nbsp; 匯出 JSON 結果</button><p>所有計算都在瀏覽器內完成，影像不會上傳。</p></div>
+      </aside>
+    </div>
+  </div>
+  <script src="distortion.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
